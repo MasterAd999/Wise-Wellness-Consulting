@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diary App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Welcome to the Diary App</h1>
+    <form id="diaryForm">
+        <textarea name="text" placeholder="Write your diary entry here..."></textarea>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="feedback"></div>
+    <script>
+        document.getElementById('diaryForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            let text = e.target.text.value;
+            let response = await fetch('/diary', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text })
+            });
+            let result = await response.json();
+            document.getElementById('feedback').innerText = `Sentiment: ${result.sentiment}`;
+        });
+    </script>
+</body>
+</html>

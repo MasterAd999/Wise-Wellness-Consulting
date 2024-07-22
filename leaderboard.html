@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboard</title>
+</head>
+<body>
+    <h1>Leaderboard</h1>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Entries</th>
+        </tr>
+        {% for user in leaderboard %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.entries }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

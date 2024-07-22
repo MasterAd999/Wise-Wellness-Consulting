@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diary</title>
+</head>
+<body>
+    <h1>Write in your Diary</h1>
+    <form action="{{ url_for('diary') }}" method="POST">
+        <label for="text">Your Entry:</label>
+        <textarea name="text" rows="10" cols="30" required></textarea>
+        <br>
+        <button type="submit">Add Entry</button>
+    </form>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+{% extends "layout.html" %}
+{% block title %}Diary{% endblock %}
+{% block content %}
+<h1>Write in your Diary</h1>
+<form action="{{ url_for('diary') }}" method="POST">
+    <label for="text">Your Entry:</label>
+    <textarea name="text" rows="10" cols="30" required></textarea>
+    <br>
+    <button type="submit">Add Entry</button>
+</form>
+<form
+action="{{ url_for('subscribe') }}"
+method="POST">
+    <button type="submit">Subscribe</button>
+</form>
+{% endblock %}
+
+</body>
+</html>

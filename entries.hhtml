@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Entries</title>
+</head>
+<body>
+    <h1>Your Entries</h1>
+    <ul>
+        {% for entry in entries %}
+        <li>
+            <p>{{ entry.text }}</p>
+            <p>Sentiment: {{ entry.sentiment }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+
+{% extends "layout.html" %}
+{% block title %}Entries{% endblock %}
+{% block content %}
+<h1>Your Entries</h1>
+<ul>
+    {% for entry in entries %}
+    <li>
+        <p>{{ entry.text }}</p>
+        <p>Sentiment: {{ entry.sentiment }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+</body>
+</html>
